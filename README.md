@@ -2,15 +2,17 @@
 
 A bare-bones text-based app launcher for Android.
 
-## Getting Started
+View your apps in a two-column grid text-based format.
 
-This project is a starting point for a Flutter application.
+Launch your apps by clicking on the text.
 
-A few resources to get you started if this is your first Flutter project:
+Open your apps' settings by clicking on the settings icon.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+***
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Features to implement: 
+- 
+
+***
+
+This project is licensed under the GNU General Public License v3.0.
