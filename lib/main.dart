@@ -90,7 +90,7 @@ class MyApp extends StatelessWidget {
     //sort alphabetically
     for (int i = 0; i < allApps.length-1; i++) {
       for (int j = 0; j < allApps.length-1; j++) {
-        if (allApps[j].packageName.compareTo(allApps[j+1].packageName) == 1) {
+        if (allApps[j].appName.compareTo(allApps[j+1].appName) == 1) {
           Application temp = allApps[j];
           allApps[j] = allApps[j+1];
           allApps[j+1] = temp;

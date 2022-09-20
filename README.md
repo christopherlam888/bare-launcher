@@ -11,7 +11,7 @@ Open your apps' settings by clicking on the settings icon.
 ***
 
 Features to implement: 
-- 
+- Work profile compatibility
 
 ***
 
