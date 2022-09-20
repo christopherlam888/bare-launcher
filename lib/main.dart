@@ -48,12 +48,15 @@ class MyApp extends StatelessWidget {
                    padding: const EdgeInsets.fromLTRB(15.0, 30.0, 15.0, 0.0),
                    child: GridView.count(
                      crossAxisCount: 2,
-                     childAspectRatio: 2/1,
+                     childAspectRatio: 4/1,
                      physics: _bouncingScrollPhysics,
                      children: List.generate(allApps.length, (index) {
                        return GestureDetector(
                          onTap: () {
                            DeviceApps.openApp(allApps[index].packageName);
+                         },
+                         onLongPress: () {
+                           DeviceApps.openAppSettings(allApps[index].packageName);
                          },
                          child: Column(
                             children: [
@@ -64,15 +67,6 @@ class MyApp extends StatelessWidget {
                                   fontSize: 20.0,
                                 ),
                                 overflow: TextOverflow.ellipsis,
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  DeviceApps.openAppSettings(allApps[index].packageName);
-                                },
-                                icon: const Icon(
-                                  Icons.settings,
-                                  color: Colors.white,
-                                ),
                               ),
                             ],
                          ),
