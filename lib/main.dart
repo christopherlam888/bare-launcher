@@ -30,57 +30,61 @@ class MyApp extends StatelessWidget {
    Widget build(BuildContext context) {
      return Scaffold(
        body: Container(
-         color: Colors.black,
-         child: FutureBuilder(
-           future: DeviceApps.getInstalledApplications(
-             includeSystemApps: true,
-             onlyAppsWithLaunchIntent: true,
+         color: Colors.white,
+         margin: const EdgeInsets.all(7.0),
+         child: Container(
+           color: Colors.black,
+           child: FutureBuilder(
+             future: DeviceApps.getInstalledApplications(
+               includeSystemApps: true,
+               onlyAppsWithLaunchIntent: true,
+             ),
+               builder: (context, AsyncSnapshot<List<Application>>snapshot){
+               if (snapshot.connectionState == ConnectionState.done){
+                 List<Application> allApps = snapshot.data!;
+                 appsSort(allApps);
+                 return Padding(
+                   padding: const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+                   child: GridView.count(
+                     crossAxisCount: 2,
+                     childAspectRatio: 2/1,
+                     physics: _bouncingScrollPhysics,
+                     children: List.generate(allApps.length, (index) {
+                       return GestureDetector(
+                         onTap: () {
+                           DeviceApps.openApp(allApps[index].packageName);
+                         },
+                         child: Column(
+                            children: [
+                              Text(
+                                allApps[index].appName,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  DeviceApps.openAppSettings(allApps[index].packageName);
+                                },
+                                icon: const Icon(
+                                  Icons.settings,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                         ),
+                       );
+                     }),
+                   ),
+                 );
+               }
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+               },
            ),
-             builder: (context, AsyncSnapshot<List<Application>>snapshot){
-             if (snapshot.connectionState == ConnectionState.done){
-               List<Application> allApps = snapshot.data!;
-               appsSort(allApps);
-               return Padding(
-                 padding: const EdgeInsets.all(10.0),
-                 child: GridView.count(
-                   crossAxisCount: 2,
-                   childAspectRatio: 2/1,
-                   physics: _bouncingScrollPhysics,
-                   children: List.generate(allApps.length, (index) {
-                     return GestureDetector(
-                       onTap: () {
-                         DeviceApps.openApp(allApps[index].packageName);
-                       },
-                       child: Column(
-                          children: [
-                            Text(
-                              allApps[index].appName,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                DeviceApps.openAppSettings(allApps[index].packageName);
-                              },
-                              icon: const Icon(
-                                Icons.settings,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                       ),
-                     );
-                   }),
-                 ),
-               );
-             }
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-             },
          ),
        ),
      );
