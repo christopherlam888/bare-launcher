@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
                  List<Application> allApps = snapshot.data!;
                  appsSort(allApps);
                  return Padding(
-                   padding: const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+                   padding: const EdgeInsets.fromLTRB(15.0, 30.0, 15.0, 0.0),
                    child: GridView.count(
                      crossAxisCount: 2,
                      childAspectRatio: 2/1,
