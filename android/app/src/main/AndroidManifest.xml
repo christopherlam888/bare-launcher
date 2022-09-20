@@ -2,7 +2,7 @@
     package="com.example.bare_launcher">
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <application
-        android:label="bare_launcher"
+        android:label="Bare Launcher"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
