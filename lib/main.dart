@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
                if (snapshot.connectionState == ConnectionState.done){
                  List<Application> allApps = snapshot.data!;
                  appsSort(allApps);
+                 appsFilter(allApps);
                  return Padding(
                    padding: const EdgeInsets.fromLTRB(15.0, 30.0, 15.0, 0.0),
                    child: GridView.count(
@@ -85,10 +86,19 @@ class MyApp extends StatelessWidget {
      );
    }
 
+  void appsFilter(List<Application> allApps){
+     //remove undesired apps from launcher screen
+    for (int i = 0; i < allApps.length; i++) {
+      if (allApps[i].packageName == "com.android.angle" || allApps[i].packageName == "com.android.traceur") {
+        allApps.removeAt(i);
+      }
+    }
+  }
+
   void appsSort(List<Application> allApps) {
     //sort alphabetically
-    for (int i = 0; i < allApps.length-1; i++) {
-      for (int j = 0; j < allApps.length-1; j++) {
+    for (int i = 0; i < allApps.length; i++) {
+      for (int j = 0; j < allApps.length - 1; j++) {
         if (allApps[j].appName.compareTo(allApps[j+1].appName) == 1) {
           Application temp = allApps[j];
           allApps[j] = allApps[j+1];
