@@ -97,8 +97,8 @@ class MyApp extends StatelessWidget {
 
   void appsSort(List<Application> allApps) {
     //sort alphabetically
-    for (int i = 0; i < allApps.length; i++) {
-      for (int j = 0; j < allApps.length - 1; j++) {
+    for (int i = 0; i < allApps.length - 1; i++) {
+      for (int j = 0; j < allApps.length - 1 - i; j++) {
         if (allApps[j].appName.compareTo(allApps[j+1].appName) == 1) {
           Application temp = allApps[j];
           allApps[j] = allApps[j+1];
