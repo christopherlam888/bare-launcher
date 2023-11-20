@@ -92,8 +92,14 @@ class MyApp extends StatelessWidget {
 
   void appsFilter(List<Application> allApps){
      //remove undesired apps from launcher screen
+    List<String> appsToRemove = [
+      "com.android.angle",
+      "com.android.traceur",
+      "com.android.healthconnect.controller"
+    ];
+
     for (int i = 0; i < allApps.length; i++) {
-      if (allApps[i].packageName == "com.android.angle" || allApps[i].packageName == "com.android.traceur") {
+      if (appsToRemove.contains(allApps[i].packageName)) {
         allApps.removeAt(i);
       }
     }
